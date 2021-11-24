@@ -1,0 +1,36 @@
+{
+  "name": "templates",
+  "version": "0.1.0",
+  "description": "Templates for fastest begin of your project",
+  "main": "index.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development webpack --mode development",
+    "build": "cross-env NODE_ENV=production webpack --mode production",
+    "watch": "cross-env NODE_ENV=development webpack --mode development --watch",
+    "hot": "cross-env NODE_ENV=development webpack serve --mode development --hot"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zheltkevich/templates.git"
+  },
+  "keywords": [
+    "webpack",
+    "eslint",
+    "stylelint",
+    "vue",
+    "templates"
+  ],
+  "author": "Aleksandr Zheltkevich <zheltkevich42@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zheltkevich/templates/issues"
+  },
+  "homepage": "https://github.com/zheltkevich/templates#readme",
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "html-webpack-plugin": "^5.5.0",
+    "webpack": "^5.64.3",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.5.0"
+  }
+}
