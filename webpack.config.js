@@ -24,6 +24,8 @@ const fileName = (extention) => {
 // Plugins
 const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 // --------------------------------------------------------------------
 
 module.exports = {
@@ -58,8 +60,20 @@ module.exports = {
     resolve: {
         alias: {
             '@': path.resolve(__dirname, 'src'),
+            '@assets': path.resolve(__dirname, 'src/assets'),
+            '@css': path.resolve(__dirname, 'src/css'),
+            '@js': path.resolve(__dirname, 'src/js'),
+            '@scss': path.resolve(__dirname, 'src/scss'),
         },
     },
+    optimization: {
+        minimize: true,
+        minimizer: [
+            // For webpack@5 you can use the `...` syntax to extend existing minimizers (i.e. `terser-webpack-plugin`), uncomment the next line
+            // `...`,
+            new CssMinimizerPlugin(),
+        ],
+      },
     plugins: [
         new HTMLWebpackPlugin({
             template: './index.html',
@@ -68,8 +82,34 @@ module.exports = {
             },
             // favicon: './assets/favicon.ico', // кладет фавикон рядом с index.html
         }),
+        new MiniCssExtractPlugin(),
     ],
     module: {
-        rules: [],
+        rules: [
+            {
+                test: /\.(scss|css)$/i, // CSS, PostCSS, Sass/Scss
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            sourceMap: true
+                        },
+                    },
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            sourceMap: true
+                        },
+                    },
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            sourceMap: true
+                        },
+                    },
+                ],
+            },
+        ],
     },
 };
