@@ -28,6 +28,7 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
+const { VueLoaderPlugin } = require('vue-loader');
 // --------------------------------------------------------------------
 
 module.exports = {
@@ -89,8 +90,12 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: fileName('css'),
         }),
+        new VueLoaderPlugin(),
         new webpack.ProvidePlugin({
             _map: ['lodash', 'map'],
+        }),
+        new webpack.ProvidePlugin({
+            Vue: ['vue/dist/vue.esm.js', 'default'],
         }),
     ],
     module: {
@@ -118,6 +123,10 @@ module.exports = {
                         },
                     },
                 ],
+            },
+            {
+                test: /\.vue$/,
+                loader: 'vue-loader',
             },
             {
                 test: /\.(ttf|woff|woff2|eot)$/i,
