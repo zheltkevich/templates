@@ -119,6 +119,14 @@ module.exports = {
                     filename: `assets/fonts/${fileName('[ext]')}`,
                 },
             },
+            {
+                test: /\.(png|jpe?g|gif|svg)$/i,
+                // More information here => https://webpack.js.org/guides/asset-modules/
+                type: 'asset/resource',
+                generator: {
+                    filename: `assets/img/${fileName('[ext]')}`,
+                },
+            },
         ],
     },
 };
