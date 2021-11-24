@@ -26,6 +26,7 @@ const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 // --------------------------------------------------------------------
 
 module.exports = {
@@ -67,10 +68,8 @@ module.exports = {
         },
     },
     optimization: {
-        minimize: true,
         minimizer: [
-            // For webpack@5 you can use the `...` syntax to extend existing minimizers (i.e. `terser-webpack-plugin`), uncomment the next line
-            // `...`,
+            new TerserPlugin(),
             new CssMinimizerPlugin(),
         ],
       },
@@ -82,7 +81,9 @@ module.exports = {
             },
             // favicon: './assets/favicon.ico', // кладет фавикон рядом с index.html
         }),
-        new MiniCssExtractPlugin(),
+        new MiniCssExtractPlugin({
+            filename: fileName('css'),
+        }),
     ],
     module: {
         rules: [
