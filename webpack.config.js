@@ -76,10 +76,11 @@ module.exports = {
     plugins: [
         new HTMLWebpackPlugin({
             template: './index.html',
+            favicon: './assets/icons/favicon.ico',
             minify: {
                 collapseWhitespace: isProduction,
             },
-            // favicon: './assets/favicon.ico', // кладет фавикон рядом с index.html
+
         }),
         new MiniCssExtractPlugin({
             filename: fileName('css'),
