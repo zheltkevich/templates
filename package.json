@@ -2,7 +2,8 @@
   "name": "templates",
   "version": "0.1.0",
   "description": "Templates for fastest begin of your project",
-  "main": "index.js",
+  "private": true,
+
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack --mode development",
     "build": "cross-env NODE_ENV=production webpack --mode production",
@@ -40,5 +41,8 @@
     "webpack": "^5.64.3",
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.5.0"
+  },
+  "dependencies": {
+    "normalize.css": "^8.0.1"
   }
 }

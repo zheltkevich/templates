@@ -17,7 +17,7 @@ console.log('Active mode: ', activeMode());
 
 const fileName = (extention) => {
     if (isDevelopment) return `[name].${extention}`;
-    else if (isProduction) return `[name].[contenthash].${extention}`;
+    else if (isProduction) return `[contenthash].${extention}`;
 };
 // --------------------------------------------------------------------
 
@@ -68,6 +68,9 @@ module.exports = {
         },
     },
     optimization: {
+        splitChunks: {
+            chunks: 'all',
+        },
         minimizer: [
             new TerserPlugin(),
             new CssMinimizerPlugin(),
@@ -89,7 +92,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.(scss|css)$/i, // CSS, PostCSS, Sass/Scss
+                test: /\.(scss|css)$/i,
                 use: [
                     MiniCssExtractPlugin.loader,
                     {
@@ -121,7 +124,6 @@ module.exports = {
             },
             {
                 test: /\.(png|jpe?g|gif|svg)$/i,
-                // More information here => https://webpack.js.org/guides/asset-modules/
                 type: 'asset/resource',
                 generator: {
                     filename: `assets/img/${fileName('[ext]')}`,
