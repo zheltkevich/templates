@@ -1,3 +1,2 @@
-body {
-    background-color: blueviolet;
-}
+@import '@css/global';
+@import '@css/fonts';

@@ -112,6 +112,13 @@ module.exports = {
                     },
                 ],
             },
+            {
+                test: /\.(ttf|woff|woff2|eot)$/i,
+                type: 'asset/resource',
+                generator: {
+                    filename: `assets/fonts/${fileName('[ext]')}`,
+                },
+            },
         ],
     },
 };
