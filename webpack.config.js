@@ -29,6 +29,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const { VueLoaderPlugin } = require('vue-loader');
+// const compiler = require('vue-template-compiler');
 // --------------------------------------------------------------------
 
 module.exports = {
@@ -62,7 +63,7 @@ module.exports = {
     },
     resolve: {
         alias: {
-            '@': path.resolve(__dirname, 'src'),
+            '@': path.resolve(__dirname, 'src/'),
             '@assets': path.resolve(__dirname, 'src/assets'),
             '@css': path.resolve(__dirname, 'src/css'),
             '@js': path.resolve(__dirname, 'src/js'),
@@ -101,6 +102,10 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.vue$/,
+                loader: 'vue-loader',
+            },
+            {
                 test: /\.(scss|css)$/i,
                 use: [
                     MiniCssExtractPlugin.loader,
@@ -123,10 +128,6 @@ module.exports = {
                         },
                     },
                 ],
-            },
-            {
-                test: /\.vue$/,
-                loader: 'vue-loader',
             },
             {
                 test: /\.(ttf|woff|woff2|eot)$/i,

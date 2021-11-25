@@ -5,7 +5,7 @@
     font-style: normal;
     src:
         local("Montserrat-Bold"),
-        url("~@assets/fonts/Montserrat-Bold.ttf") format("truetype"),
+        url("@assets/fonts/Montserrat-Bold.ttf") format("truetype"),
 }
 
 @font-face {
@@ -15,7 +15,7 @@
     font-style: normal;
     src:
         local("Montserrat-Medium"),
-        url("~@assets/fonts/Montserrat-Medium.ttf") format("truetype"),
+        url("@assets/fonts/Montserrat-Medium.ttf") format("truetype"),
 }
 
 @font-face {
@@ -25,5 +25,5 @@
     font-style: normal;
     src:
         local("Montserrat-Regular"),
-        url("~@assets/fonts/Montserrat-Regular.ttf") format("truetype"),
+        url("@assets/fonts/Montserrat-Regular.ttf") format("truetype"),
 }
