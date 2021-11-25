@@ -19,6 +19,10 @@ const fileName = (extention) => {
     if (isDevelopment) return `[name].${extention}`;
     else if (isProduction) return `[contenthash].${extention}`;
 };
+
+const resolve = (folder) => {
+    return path.resolve(__dirname, folder);
+};
 // --------------------------------------------------------------------
 
 // Plugins
@@ -32,14 +36,14 @@ const { VueLoaderPlugin } = require('vue-loader');
 // --------------------------------------------------------------------
 
 module.exports = {
-    context: path.resolve(__dirname, 'src'),
+    context: resolve('src'),
     mode: 'development',
     entry: {
         main: ['./index.js'],
     },
     output: {
         filename: fileName('js'),
-        path: path.resolve(__dirname, 'dist'),
+        path: resolve('dist'),
         clean: true,
     },
     devtool: isDevelopment ? 'source-map' : false,
@@ -63,11 +67,11 @@ module.exports = {
     resolve: {
         alias: {
             process: "process/browser",
-            '@': path.resolve(__dirname, 'src/'),
-            '@assets': path.resolve(__dirname, 'src/assets'),
-            '@css': path.resolve(__dirname, 'src/css'),
-            '@js': path.resolve(__dirname, 'src/js'),
-            '@scss': path.resolve(__dirname, 'src/scss'),
+            '@': resolve('src/'),
+            '@assets': resolve('src/assets'),
+            '@css': resolve('src/css'),
+            '@js': resolve('src/js'),
+            '@scss': resolve('src/scss'),
         },
     },
     optimization: {
