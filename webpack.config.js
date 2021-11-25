@@ -33,13 +33,14 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const { VueLoaderPlugin } = require('vue-loader');
+const WorkboxPlugin = require('workbox-webpack-plugin');
 // --------------------------------------------------------------------
 
 module.exports = {
     context: resolve('src'),
     mode: 'development',
     entry: {
-        main: ['./index.js'],
+        main: ['./main.js'],
     },
     output: {
         filename: fileName('js'),
@@ -91,6 +92,10 @@ module.exports = {
                 collapseWhitespace: isProduction,
             },
 
+        }),
+        new WorkboxPlugin.GenerateSW({
+            clientsClaim: true,
+            skipWaiting: true,
         }),
         new MiniCssExtractPlugin({
             filename: fileName('css'),
