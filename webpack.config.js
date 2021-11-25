@@ -82,7 +82,7 @@ module.exports = {
     plugins: [
         new HTMLWebpackPlugin({
             template: './index.html',
-            favicon: './assets/icons/favicon.ico',
+            favicon: './favicon.ico',
             minify: {
                 collapseWhitespace: isProduction,
             },
