@@ -40,7 +40,7 @@ module.exports = {
     context: resolve('src'),
     mode: 'development',
     entry: {
-        main: ['./main.js'],
+        main: ['./index.js'],
     },
     output: {
         filename: fileName('js'),
