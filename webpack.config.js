@@ -29,7 +29,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const { VueLoaderPlugin } = require('vue-loader');
-// const compiler = require('vue-template-compiler');
 // --------------------------------------------------------------------
 
 module.exports = {
@@ -63,6 +62,7 @@ module.exports = {
     },
     resolve: {
         alias: {
+            process: "process/browser",
             '@': path.resolve(__dirname, 'src/'),
             '@assets': path.resolve(__dirname, 'src/assets'),
             '@css': path.resolve(__dirname, 'src/css'),
@@ -93,9 +93,8 @@ module.exports = {
         }),
         new VueLoaderPlugin(),
         new webpack.ProvidePlugin({
+            process: 'process/browser',
             _map: ['lodash', 'map'],
-        }),
-        new webpack.ProvidePlugin({
             Vue: ['vue/dist/vue.esm.js', 'default'],
         }),
     ],
