@@ -1,14 +1,23 @@
 <template>
-    <h1>safkmmodkvn;odjkfnv ;klk;ns;ldkvmn;lksdn;bjkdsnfb</h1>
-    <HelloWorld></HelloWorld>
+    <div id="nav" class="nav">
+        <router-link to="/">Home</router-link> |
+        <router-link to="/about">About</router-link>
+    </div>
+    <router-view/>
 </template>
 
 <script>
-import HelloWorld from '@/components/HelloWorld.vue';
+import AwesomeComponent from '@/components/AwesomeComponent.vue';
 export default {
     name: 'App',
     components: {
-        HelloWorld,
+        AwesomeComponent,
     },
 };
 </script>
+
+<style lang="scss">
+.nav {
+    text-align: center;
+}
+</style>
