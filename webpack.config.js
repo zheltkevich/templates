@@ -35,7 +35,6 @@ const TerserPlugin = require('terser-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
 const WorkboxPlugin = require('workbox-webpack-plugin');
 const ESLintWebpackPlugin = require('eslint-webpack-plugin');
-// const BabelESLintPlugin = require('babel-eslint-plugin');
 // --------------------------------------------------------------------
 
 module.exports = {
@@ -69,7 +68,7 @@ module.exports = {
     },
     resolve: {
         alias: {
-            '@': resolve('./src'),
+            '@': resolve('src'),
             '@assets': resolve('src/assets'),
             '@css': resolve('src/css'),
             '@js': resolve('src/js'),
@@ -110,7 +109,7 @@ module.exports = {
         }),
         new ESLintWebpackPlugin({
             // context: resolve('src'),
-            fix: true,
+            // fix: true,
         }),
     ],
     module: {

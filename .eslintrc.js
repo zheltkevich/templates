@@ -1,19 +1,26 @@
 module.exports = {
     root: true,
+    parser: '@babel/eslint-parser',
     parserOptions: {
-        parser: '@babel/eslint-parser',
         sourceType: 'module',
-    },
-    settings: {
-        'import/resolver': {
-            webpack: {
-                config: './webpack.config.js',
-                alias: {
-                    '@': './src',
-                },
-            },
+        allowImportExportEverywhere: false,
+        ecmaFeatures: {
+            globalReturn: false,
+        },
+        babelOptions: {
+            configFile: './babel.config.js',
         },
     },
+    // settings: {
+    //     'import/resolver': {
+    //         webpack: {
+    //             config: './webpack.config.js',
+    //             alias: {
+    //                 '@': './src',
+    //             },
+    //         },
+    //     },
+    // },
     // settings: {
     //     'import/resolver': {
     //         'babel-module': {
