@@ -108,8 +108,7 @@ module.exports = {
             Vue: ['vue/dist/vue.esm.js', 'default'],
         }),
         new ESLintWebpackPlugin({
-            // context: resolve('src'),
-            // fix: true,
+            fix: true,
         }),
     ],
     module: {

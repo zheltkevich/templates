@@ -3,32 +3,19 @@ module.exports = {
     parser: '@babel/eslint-parser',
     parserOptions: {
         sourceType: 'module',
-        allowImportExportEverywhere: false,
-        ecmaFeatures: {
-            globalReturn: false,
-        },
+        // ecmaVersion: 2020,
+        // extensions: ['.vue', '.js'],
         babelOptions: {
-            configFile: './babel.config.js',
+            presets: ['@babel/preset-env'],
         },
     },
     // settings: {
-    //     'import/resolver': {
-    //         webpack: {
-    //             config: './webpack.config.js',
-    //             alias: {
-    //                 '@': './src',
-    //             },
-    //         },
-    //     },
-    // },
-    // settings: {
-    //     'import/resolver': {
-    //         'babel-module': {
-    //             alias: {
-    //                 '@': './src',
-    //             },
-    //         },
-    //     },
+    //     // 'import/resolver': {
+    //     //     node: {},
+    //     // },
+    //     // 'import/resolver': {
+    //     //     'babel-module': {},
+    //     // },
     // },
     env: {
         browser: true,
@@ -38,6 +25,8 @@ module.exports = {
     extends: [
         'plugin:vue/vue3-recommended',
         'plugin:import/recommended',
+        'plugin:import/errors',
+        'plugin:import/warnings',
     ],
     plugins: ['babel', 'vue', 'import', 'node'],
     globals: {
@@ -101,14 +90,15 @@ module.exports = {
         'no-invalid-this': 'error',
         'no-labels': 'error',
         'no-lone-blocks': 'error',
-        'no-magic-numbers': [
-            'warn',
-            {
-                ignore: [-1, 0, 1, 2],
-                ignoreArrayIndexes: true,
-                ignoreDefaultValues: true,
-            },
-        ],
+        'no-magic-numbers': 0,
+        // 'no-magic-numbers': [
+        //     'warn',
+        //     {
+        //         ignoreArrayIndexes: true,
+        //         ignore: [-1, 0, 1, 2],
+        //         ignoreDefaultValues: true,
+        //     },
+        // ],
         'no-multi-spaces': 'error',
         'no-new': 'error',
         'no-new-func': 'error',
@@ -412,10 +402,10 @@ module.exports = {
         'import/default': 'error',
         'import/extensions': ['error', 'always'],
         'import/named': 'error',
-        'import/no-extraneous-dependencies': 'error',
+        'import/no-extraneous-dependencies': 0,
         'import/no-named-as-default': 'error',
         'import/no-named-as-default-member': 'error',
-        'import/no-unresolved': 'error',
+        'import/no-unresolved': 0,
         'import/no-useless-path-segments': 'error',
         'import/order': [
             'error',

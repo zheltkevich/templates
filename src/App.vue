@@ -19,7 +19,7 @@ import AwesomeComponent from '@/components/AwesomeComponent.vue';
 export default {
     name: 'App',
     components: {
-        // AwesomeComponent,
+        AwesomeComponent,
     },
 };
 </script>
