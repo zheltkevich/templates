@@ -1,9 +1,17 @@
 <template>
-    <div id="nav" class="nav">
-        <router-link to="/">Home</router-link> |
-        <router-link to="/about">About</router-link>
+    <div class="main">
+        <div
+            id="nav"
+            class="nav">
+            <router-link to="/">
+                Home
+            </router-link> |
+            <router-link to="/about">
+                About
+            </router-link>
+        </div>
+        <router-view />
     </div>
-    <router-view/>
 </template>
 
 <script>
@@ -11,7 +19,7 @@ import AwesomeComponent from '@/components/AwesomeComponent.vue';
 export default {
     name: 'App',
     components: {
-        AwesomeComponent,
+        // AwesomeComponent,
     },
 };
 </script>

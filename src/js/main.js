@@ -1,2 +1,3 @@
 const test = 'Test string';
-console.log(test);
+
+console.log(test); // eslint-disable-line no-console

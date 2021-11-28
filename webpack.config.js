@@ -1,9 +1,11 @@
 // --------------------------------------------------------------------
 // webpack-dev-server utils
+const path = require('path');
 const development = 'development';
 const production = 'production';
 const isDevelopment = process.env.NODE_ENV === development;
 const isProduction = process.env.NODE_ENV === production;
+
 
 const activeMode = () => {
     let consoleText = '';
@@ -13,27 +15,27 @@ const activeMode = () => {
 
     return consoleText;
 };
-console.log('Active mode: ', activeMode());
 
-const fileName = (extention) => {
+console.log('Active mode: ', activeMode()); // eslint-disable-line no-console
+
+const fileName = extention => {
     if (isDevelopment) return `[name].${extention}`;
     else if (isProduction) return `[contenthash].${extention}`;
 };
 
-const resolve = (folder) => {
-    return path.resolve(__dirname, folder);
-};
+const resolve = folder => path.resolve(__dirname, folder);
 // --------------------------------------------------------------------
 
 // Plugins
-const path = require('path');
 const webpack = require('webpack');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const TerserPlugin = require("terser-webpack-plugin");
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
 const WorkboxPlugin = require('workbox-webpack-plugin');
+const ESLintWebpackPlugin = require('eslint-webpack-plugin');
+// const BabelESLintPlugin = require('babel-eslint-plugin');
 // --------------------------------------------------------------------
 
 module.exports = {
@@ -67,12 +69,12 @@ module.exports = {
     },
     resolve: {
         alias: {
-            process: "process/browser",
-            '@': resolve('src/'),
+            '@': resolve('./src'),
             '@assets': resolve('src/assets'),
             '@css': resolve('src/css'),
             '@js': resolve('src/js'),
             '@scss': resolve('src/scss'),
+            'process': 'process/browser',
         },
     },
     optimization: {
@@ -83,7 +85,7 @@ module.exports = {
             new TerserPlugin(),
             new CssMinimizerPlugin(),
         ],
-      },
+    },
     plugins: [
         new HTMLWebpackPlugin({
             template: './index.html',
@@ -106,6 +108,10 @@ module.exports = {
             _map: ['lodash', 'map'],
             Vue: ['vue/dist/vue.esm.js', 'default'],
         }),
+        new ESLintWebpackPlugin({
+            // context: resolve('src'),
+            fix: true,
+        }),
     ],
     module: {
         rules: [
@@ -120,19 +126,19 @@ module.exports = {
                     {
                         loader: 'css-loader',
                         options: {
-                            sourceMap: true
+                            sourceMap: true,
                         },
                     },
                     {
                         loader: 'postcss-loader',
                         options: {
-                            sourceMap: true
+                            sourceMap: true,
                         },
                     },
                     {
                         loader: 'sass-loader',
                         options: {
-                            sourceMap: true
+                            sourceMap: true,
                         },
                     },
                 ],
