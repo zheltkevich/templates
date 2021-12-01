@@ -1,6 +1,7 @@
 {
   "name": "templates",
   "version": "0.1.0",
+  "type": "module",
   "description": "Templates for fastest begin of your project",
   "private": true,
   "scripts": {
